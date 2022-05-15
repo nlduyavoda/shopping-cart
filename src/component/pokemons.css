@@ -1,0 +1,28 @@
+.pokemons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.pokemon {
+  display: flex;
+  border: 1px solid;
+  width: calc(100% / 3 - 21px);
+  flex-direction: column;
+  align-content: stretch;
+}
+.name {
+  background-color: aqua;
+  display: flex;
+  flex: 0;
+}
+.image {
+  flex: 1;
+}
+.btn-add-to-cart {
+  flex: 0;
+  background-color: beige;
+}
+
+img {
+  min-height: 335px;
+}
