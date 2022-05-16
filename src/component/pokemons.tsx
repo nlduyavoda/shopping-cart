@@ -1,10 +1,11 @@
 import "./pokemons.css";
-export interface pokemon {
+export type pokemon = {
   id: string;
   name: string;
   number: string;
   image: string;
-}
+  quantity?: number;
+};
 
 export default function Pokemons({
   pokemons,
@@ -16,7 +17,7 @@ export default function Pokemons({
 }) {
   return (
     <div className="pokemons">
-      {pokemons.map((pokemon: pokemon) => {
+      {pokemons.map(({ quantity = 1, ...pokemon }: pokemon) => {
         return (
           <div className="pokemon" key={pokemon.id}>
             <div className="name">{pokemon.name}</div>
@@ -24,9 +25,7 @@ export default function Pokemons({
               <img src={pokemon.image} alt="" />
             </div>
             <div className="btn-add-to-cart">
-              <button onClick={() => onSetPokemon({ ...pokemon })}>
-                add to cart
-              </button>
+              <button onClick={() => onSetPokemon(pokemon)}>add to cart</button>
             </div>
           </div>
         );
