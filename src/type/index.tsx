@@ -5,3 +5,11 @@ export type pokemon = {
   image: string;
   quantity: number;
 };
+export interface cartType extends pokemon {
+  quantity:number
+} 
+
+export const action = {
+  INCREASE: "INCREASE",
+  REDUCE: "REDUCE"
+};

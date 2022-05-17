@@ -1,9 +1,14 @@
 import { useState } from "react";
-import { pokemon } from "../pokemons";
+import { cartType } from "../../type";
 import "./index.css";
-export default function Cart({ pokemons = [] }: { pokemons: pokemon[] }) {
+export default function Cart({
+  carts = [],
+  onReduce,
+}: {
+  carts: cartType[];
+  onReduce: (cart: cartType) => void;
+}) {
   const [openModal, setOpenModal] = useState(false);
-  // console.log("pokemons :>> ", pokemons);
   return (
     <div className="carts">
       <div
@@ -11,18 +16,17 @@ export default function Cart({ pokemons = [] }: { pokemons: pokemon[] }) {
           setOpenModal(!openModal);
         }}
       >
-        cart: {pokemons.length}
+        cart: {carts.length}
       </div>
-      {pokemons.length > 0 && (
+      {carts.length > 0 && (
         <div>
-          {pokemons.map((pokemon: pokemon) => {
+          {carts.map((cart: cartType) => {
             return (
-              <div key={pokemon.id} className="cart">
-                <div className="cart-number">{pokemon.number}</div>
-                <div className="cart-name">{pokemon.name}</div>
-                <div>-</div>
-                <div>1</div>
-                <div>+</div>
+              <div key={cart.id} className="cart">
+                <div className="cart-number">{cart.number}</div>
+                <div className="cart-name">{cart.name}</div>
+                <div>{cart.quantity}</div>
+                <div onClick={() => onReduce(cart)}>-</div>
               </div>
             );
           })}

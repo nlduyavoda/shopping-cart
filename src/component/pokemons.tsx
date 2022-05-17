@@ -1,31 +1,26 @@
+import { cartType, pokemon } from "../type";
 import "./pokemons.css";
-export type pokemon = {
-  id: string;
-  name: string;
-  number: string;
-  image: string;
-  quantity?: number;
-};
 
 export default function Pokemons({
   pokemons,
-  onSetPokemon,
+  onAddToCart,
 }: {
   pokemons: pokemon[];
-  pokemonState: pokemon[] | [];
-  onSetPokemon: any;
+  onAddToCart: (cart: cartType) => void;
 }) {
   return (
     <div className="pokemons">
-      {pokemons.map(({ quantity = 1, ...pokemon }: pokemon) => {
+      {pokemons.map((pokemon: pokemon) => {
         return (
           <div className="pokemon" key={pokemon.id}>
             <div className="name">{pokemon.name}</div>
             <div className="image">
-              <img src={pokemon.image} alt="" />
+              {/* <img src={pokemon.image} alt="" /> */}
             </div>
             <div className="btn-add-to-cart">
-              <button onClick={() => onSetPokemon(pokemon)}>add to cart</button>
+              <button onClick={() => onAddToCart({ ...pokemon, quantity: 1 })}>
+                add to cart
+              </button>
             </div>
           </div>
         );

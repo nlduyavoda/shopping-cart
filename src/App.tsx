@@ -1,50 +1,46 @@
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import React, { useState } from "react";
 import "./App.css";
 import Cart from "./component/cart";
+import CartDispatch from "./component/cart/useCartDispatch";
 import Pokemons from "./component/pokemons";
-import { pokemon } from "./type";
+import { GET_POKEMONS } from "./graphql/query";
+import { action, cartType } from "./type";
 
-const GET_POKEMONS = gql`
-  query pokemons($first: Int!) {
-    pokemons(first: $first) {
-      id
-      name
-      number
-      image
-    }
-  }
-`;
 function App() {
   const { data, loading } = useQuery(GET_POKEMONS, {
     variables: { first: 12 },
   });
-  const [pokemons, setPokemon] = useState<pokemon[]>([]);
 
-  const handleAdd = (pokemon: pokemon) => {
-    const isIncluded = pokemons.some((item) => item.id === pokemon.id);
-    if (isIncluded) {
-      pokemons.map((item: pokemon) => {
-        if (pokemon.id === item.id) {
-          const quantity = item.quantity + 1;
-          return { ...item, quantity: quantity };
-        }
-      });
+  const [carts, setCarts] = useState<cartType[]>([]);
+
+  const handleAdd = (pokemon: cartType) => {
+    const isExisted = carts.some((item) => item.id === pokemon.id);
+    if (isExisted) {
+      setCarts(CartDispatch(pokemon, carts, action.INCREASE));
     } else {
-      setPokemon([...pokemons, { ...pokemon, quantity: 1 }]);
+      setCarts([...carts, pokemon]);
     }
-    // }
+  };
+
+  const handleReduce = (pokemon: cartType) => {
+    const cartIndex = carts.findIndex(
+      (element: cartType) => element.id === pokemon.id && element.quantity
+    );
+    if (pokemon.quantity > 1) {
+      setCarts(CartDispatch(pokemon, carts, action.REDUCE));
+    } else {
+      const newCarts = [...carts];
+      newCarts.splice(cartIndex, 1);
+      setCarts(newCarts);
+    }
   };
 
   return (
     <div className="App">
-      <Cart pokemons={pokemons} />
+      <Cart carts={carts} onReduce={handleReduce} />
       {!loading && data.pokemons.length ? (
-        <Pokemons
-          pokemons={data.pokemons}
-          pokemonState={pokemons}
-          onSetPokemon={handleAdd}
-        />
+        <Pokemons pokemons={data.pokemons} onAddToCart={handleAdd} />
       ) : (
         "loading"
       )}
