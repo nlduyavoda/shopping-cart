@@ -3,15 +3,16 @@ import React, { useState } from "react";
 import "./App.css";
 import Cart from "./component/cart";
 import CartDispatch from "./component/cart/useCartDispatch";
+import Form from "./component/form";
 import Pokemons from "./component/pokemons";
-import { GET_POKEMONS } from "./graphql/query";
+import { GET_USERS } from "./graphql/query";
 import { action, cartType } from "./type";
 
 function App() {
-  const { data, loading } = useQuery(GET_POKEMONS, {
+  const { data, loading } = useQuery(GET_USERS, {
     variables: { first: 12 },
   });
-
+  console.log("data :>> ", data);
   const [carts, setCarts] = useState<cartType[]>([]);
 
   const handleAdd = (pokemon: cartType) => {
@@ -38,12 +39,13 @@ function App() {
 
   return (
     <div className="App">
-      <Cart carts={carts} onReduce={handleReduce} />
-      {!loading && data.pokemons.length ? (
+      <Form />
+      {/* <Cart carts={carts} onReduce={handleReduce} /> */}
+      {/* {!loading && data.pokemons.length ? (
         <Pokemons pokemons={data.pokemons} onAddToCart={handleAdd} />
       ) : (
         "loading"
-      )}
+      )} */}
     </div>
   );
 }

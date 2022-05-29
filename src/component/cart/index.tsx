@@ -25,6 +25,7 @@ export default function Cart({
               <div key={cart.id} className="cart">
                 <div className="cart-number">{cart.number}</div>
                 <div className="cart-name">{cart.name}</div>
+
                 <div>{cart.quantity}</div>
                 <div onClick={() => onReduce(cart)}>-</div>
               </div>

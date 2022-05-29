@@ -15,7 +15,7 @@ export default function Pokemons({
           <div className="pokemon" key={pokemon.id}>
             <div className="name">{pokemon.name}</div>
             <div className="image">
-              {/* <img src={pokemon.image} alt="" /> */}
+              <img src={pokemon.image} alt="" />
             </div>
             <div className="btn-add-to-cart">
               <button onClick={() => onAddToCart({ ...pokemon, quantity: 1 })}>

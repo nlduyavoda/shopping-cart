@@ -1,6 +1,7 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { QueryClient, QueryClientProvider } from "react-query";
 import App from "./App";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
@@ -8,14 +9,18 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 const client = new ApolloClient({
-  uri: "https://graphql-pokemon2.vercel.app/",
+  uri: "http://localhost:3000/",
   cache: new InMemoryCache(),
 });
+const queryClient = new QueryClient();
+
 root.render(
   <React.StrictMode>
-    <ApolloProvider client={client}>
-      <App />
-    </ApolloProvider>
+    <QueryClientProvider client={queryClient}>
+      <ApolloProvider client={client}>
+        <App />
+      </ApolloProvider>
+    </QueryClientProvider>
   </React.StrictMode>
 );
 
