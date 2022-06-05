@@ -12,7 +12,13 @@ const client = new ApolloClient({
   uri: "http://localhost:3000/",
   cache: new InMemoryCache(),
 });
-const queryClient = new QueryClient();
+export const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 root.render(
   <React.StrictMode>
