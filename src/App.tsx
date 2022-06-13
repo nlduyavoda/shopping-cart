@@ -1,28 +1,35 @@
 import { useRef, useState } from "react";
 import { useQuery } from "react-query";
 import "./App.scss";
-import { inputPutCard } from "./type";
-import { useCardMutation } from "./useMutation";
+import { Pagination } from "./component/pagination";
+import { Card, inputPutCard, PaginateCards } from "./type";
+import { host, useCardMutation } from "./useMutation";
 import { MockInputCard } from "./utils";
-const host = "http://localhost:8000/";
 
-export type Card = {
-  id: number;
-  name: string;
-  description: string;
-  image: string;
-};
 const fetchAPI = () => {
   const data = fetch(host)
     .then((res) => res.json())
     .then((res) => res);
   return data;
 };
+const paginateAPI: PaginateCards = async (currentPage) => {
+  const data = await fetch(`${host}${currentPage}`)
+    .then((res) => res.json())
+    .then((res) => res);
+  return data;
+};
 
 function App() {
+  const [currentPage, setCurrentPage] = useState(1);
   const { data: cardData } = useQuery(["get-cards"], fetchAPI);
+  const { data: paginationRes } = useQuery(
+    ["paginate-cards", currentPage],
+    () => paginateAPI(currentPage)
+  );
   const { postCard_test, resetCard_test } = useCardMutation();
+
   const [state, setState] = useState<Card | null>();
+
   const activeRef = useRef(null);
 
   const handleSelectectedCard = (card: Card) => {
@@ -33,12 +40,15 @@ function App() {
     }
   };
 
+  const onChangeCurrentPage = (newCurrentPage: number) => {
+    setCurrentPage(newCurrentPage);
+  };
   return (
     <div className="App">
       <div className="container">
         <div className="list-card">
-          {cardData &&
-            cardData.map((card: Card, idx: number) => {
+          {paginationRes?.cards &&
+            paginationRes?.cards.map((card: Card, idx: number) => {
               return (
                 <div
                   ref={activeRef}
@@ -70,6 +80,13 @@ function App() {
                 </div>
               );
             })}
+          {paginationRes?.totalPage && currentPage && (
+            <Pagination
+              input={currentPage}
+              totalPages={paginationRes?.totalPage}
+              onSetCurrentPage={onChangeCurrentPage}
+            />
+          )}
         </div>
 
         <div className="btn-options">

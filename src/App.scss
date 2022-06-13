@@ -1,9 +1,14 @@
+$base-white: white;
+$base-red: red;
+$base-black: black;
+
 .App {
   .container {
     height: 100vh;
     display: flex;
     flex-wrap: wrap;
     width: 100%;
+    position: relative;
     .list-card {
       width: 54%;
       display: flex;

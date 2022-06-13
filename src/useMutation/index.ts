@@ -1,8 +1,7 @@
 import { useMutation } from "react-query";
 import { queryClient } from "../index";
 import { add__card, reset__card, edit__card } from "../api";
-import { inputPutCard } from "../type/index";
-import { Card } from "../App";
+import { Card, inputPutCard } from "../type/index";
 export const setQueriesData = (value: any) => {
   queryClient.setQueriesData(["get-cards"], () => value);
 };

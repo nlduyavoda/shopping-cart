@@ -21,3 +21,19 @@ export const action = {
   INCREASE: "INCREASE",
   REDUCE: "REDUCE",
 };
+
+export type Card = {
+  id: number;
+  name: string;
+  description: string;
+  image: string;
+};
+
+export type PaginationResult = {
+  cards: Card[];
+  totalPage: number;
+  isNext: boolean;
+  isPrevous: boolean;
+};
+
+export type PaginateCards = (currentPage: number) => Promise<PaginationResult>;

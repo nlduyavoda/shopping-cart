@@ -1,0 +1,36 @@
+$base-white: white;
+$base-red: red;
+$base-black: black;
+$size: 40px;
+
+.pagination {
+  height: $size;
+  width: 50%;
+  display: flex;
+  position: fixed;
+  top: calc(100vh - $size);
+  left: 2%;
+  z-index: 3;
+  background-color: $base-white;
+
+  .list {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 30px;
+      width: 30px;
+      border: 1px solid;
+      border-radius: 5px;
+      cursor: pointer;
+      &.active {
+        background-color: $base-red;
+        color: $base-black;
+      }
+    }
+  }
+}
