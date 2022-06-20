@@ -1,0 +1,36 @@
+.navigation {
+  z-index: 4;
+  height: 100vh;
+  background-color: white;
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: ease 1s;
+  width: 0;
+  border: 1px solid;
+  &.active {
+    transform: scaleX(1);
+    width: calc(30% - 3px);
+  }
+  .field-row {
+    height: 100px;
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 20px;
+    &.icon {
+    }
+    &.buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      label {
+        margin-right: 20px;
+      }
+      .add {
+        width: 100%;
+      }
+      .reset {
+        width: 100%;
+      }
+    }
+  }
+}

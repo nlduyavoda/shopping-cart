@@ -1,0 +1,115 @@
+.cards {
+  width: 70%;
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  transition: ease 1s;
+  &.active {
+    width: 99%;
+    transition: ease 1s;
+    .list-card {
+      .card {
+        &_image {
+          img {
+            object-position: 0% 14%;
+            object-fit: cover;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+          }
+        }
+      }
+    }
+  }
+  .list-card {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    height: 100%;
+    .card {
+      display: flex;
+      width: calc(50% - 40px);
+      height: 70%;
+      font-size: 20px;
+      flex-direction: column;
+      padding: 0px 20px 0 20px;
+      justify-content: center;
+      &_image {
+        flex-shrink: 0;
+        height: 60%;
+        border: 3px solid;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border-bottom: none;
+        position: relative;
+        &.active {
+          border: 10px solid red;
+          border-bottom: none;
+          border-top-left-radius: 20px;
+          border-top-right-radius: 20px;
+        }
+        & .tag-price {
+          top: -25px;
+          left: -20px;
+          position: absolute;
+          height: 70px;
+          width: 100px;
+          border: 3px solid black;
+          border-radius: 10px;
+          background-color: #e30022;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 2px 2px #343434df;
+
+          & span {
+            font-weight: bold;
+            color: whitesmoke;
+            font-family: "Libre Baskerville";
+            font-size: 30px;
+          }
+        }
+        img {
+          object-position: 0% 14%;
+          object-fit: cover;
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px;
+        }
+      }
+      &_body {
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        border-top: none;
+        border: 3px solid;
+        padding: 10px;
+        flex-shrink: 1;
+        min-height: 150px;
+        &.active {
+          border: 10px solid red;
+          border-top: none;
+          border-bottom-left-radius: 20px;
+          border-bottom-right-radius: 20px;
+        }
+        .title {
+          font-family: roboto;
+          font-weight: bold;
+          color: #e30022;
+          font-size: 30px;
+          -webkit-text-stroke-width: 1px;
+          -webkit-text-stroke-color: black;
+          flex-shrink: 1;
+        }
+        & .description {
+          height: 75px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          flex-shrink: 0;
+        }
+      }
+    }
+  }
+}

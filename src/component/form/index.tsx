@@ -1,38 +1,50 @@
-import { gql, useMutation } from "@apollo/client";
-import { useForm } from "react-hook-form";
+import { useState } from "react";
+import { Card, inputPutCard } from "../../type";
+import { useCardMutation } from "../../useMutation";
 
-const INCREMENT_COUNTER = gql`
-  mutation SingleUpload($file: FileUpload!) {
-    singleUpload(file: $file) {
-      filename
-      mimetype
-      encoding
-    }
-  }
-`;
-
-export default function Form(props: any) {
-  const [mutateFunction, { data, loading, error }] =
-    useMutation(INCREMENT_COUNTER);
-
-  const { register, handleSubmit } = useForm();
-
-  const onSubmit = async (data: any) => {
-    const res = data.file[0];
-    console.log("res :>> ", res);
-    mutateFunction({
-      variables: {
-        file: res,
-      },
-    });
+export const Form = ({
+  card: card,
+  cardData: cardData,
+}: {
+  card: Card;
+  cardData: Card[];
+}) => {
+  const { updateCard_test } = useCardMutation();
+  const [state, setState] = useState<{ name: string; description: string }>({
+    name: card.name,
+    description: card.description,
+  });
+  const handleEdit = (cardData: Card[], { id, card }: inputPutCard) => {
+    updateCard_test(cardData, { id: id, card: card });
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <input type="file" {...register("file")} />
-        <input type="submit" />
-      </form>
+    <div className="form">
+      <label htmlFor="name">name: </label>
+      <input
+        type="name"
+        value={state.name}
+        onChange={(e) => setState({ ...state, name: e.target.value })}
+      />
+      <label htmlFor="description">description: </label>
+      <input
+        type="description"
+        value={state.description}
+        onChange={(e) => setState({ ...state, description: e.target.value })}
+      />
+      {/* <label htmlFor="img">image: </label>
+      <input type="img" value={card.name}/> */}
+      <button
+        className="btn-add"
+        onClick={() =>
+          handleEdit(cardData, {
+            id: card.id,
+            card: state,
+          })
+        }
+      >
+        edit
+      </button>
     </div>
   );
-}
+};

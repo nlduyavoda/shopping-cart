@@ -1,3 +1,6 @@
+import { PaginateCards } from "../type";
+import { host } from "../useMutation";
+
 export const add__card = async (url: string, card: any) => {
   const data = await fetch(url, {
     method: "POST",
@@ -49,5 +52,18 @@ export const edit__card = async (url: string, id: number, card: any) => {
     .then((json) => {
       return json;
     });
+  return data;
+};
+
+export const fetchAPI = () => {
+  const data = fetch(host)
+    .then((res) => res.json())
+    .then((res) => res);
+  return data;
+};
+export const paginateAPI: PaginateCards = async (currentPage) => {
+  const data = await fetch(`${host}${currentPage}`)
+    .then((res) => res.json())
+    .then((res) => res);
   return data;
 };

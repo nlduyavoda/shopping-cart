@@ -9,10 +9,14 @@ $size: 40px;
   display: flex;
   position: fixed;
   top: calc(100vh - $size);
-  left: 2%;
+  left: 30%;
   z-index: 3;
   background-color: $base-white;
-
+  transition: ease 1s;
+  &.active {
+    transition: ease 1s;
+    left: 45%;
+  }
   .list {
     width: 50%;
     display: flex;

@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import { handleCheck } from "../../api/controller";
 import "./index.scss";
 export const Pagination = ({
+  isOpen,
   input,
   totalPages,
   onSetCurrentPage,
 }: {
+  isOpen: Boolean;
   input: number | 1;
   totalPages: number;
   onSetCurrentPage: any;
@@ -14,11 +16,12 @@ export const Pagination = ({
   // const [currentPage, setCurrentPage] = useState(input);
   useEffect(() => {
     const data = handleCheck(input, totalPages);
+    console.log("data :>> ", data);
     setState(data);
   }, [input, totalPages, input]);
 
   return (
-    <div className="pagination">
+    <div className={`pagination ${!isOpen ? "active" : ""}`}>
       <button
         disabled={input === 1}
         className="item"
