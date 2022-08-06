@@ -32,7 +32,7 @@ export const reset__card = async (url: string) => {
   return data;
 };
 
-export const edit__card = async (url: string, id: number, card: any) => {
+export const edit__card = async (url: string, id: string, card: any) => {
   const data = await fetch(`${url}${id}`, {
     method: "PUT",
     body: JSON.stringify({

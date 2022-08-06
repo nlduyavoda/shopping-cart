@@ -29,7 +29,7 @@ export const useCardMutation = () => {
     return reset__card(host);
   });
   const { mutate: putCard } = useMutation(
-    ({ id, card }: { id: number; card: any }) => edit__card(host, id, card)
+    ({ id, card }: { id: string; card: any }) => edit__card(host, id, card)
   );
 
   return {

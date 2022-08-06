@@ -37,23 +37,23 @@ export const CardPage = ({ isOpen }: { isOpen: Boolean }) => {
                 onClick={() => handleSelectectedCard(card)}
               >
                 <div
-                  className={`card_image ${state?.id === card.id && "active"}`}
+                  className={`card_image ${state?.id === card?.id && "active"}`}
                 >
                   <div className="tag-price">
-                    <span>{card.id}</span>
+                    <span>{card?.id}</span>
                   </div>
                   <img
                     style={{ height: "100%", width: "100%" }}
-                    src={card.image}
-                    alt={card.name}
+                    src={card?.image}
+                    alt={card?.name}
                   />
                 </div>
 
                 <div
-                  className={`card_body ${state?.id === card.id && "active"}`}
+                  className={`card_body ${state?.id === card?.id && "active"}`}
                 >
-                  <div className="title">{card.name.toUpperCase()}</div>
-                  <div className="description">{card.description}</div>
+                  <div className="title">{card?.name.toUpperCase()}</div>
+                  <div className="description">{card?.description}</div>
                 </div>
               </div>
             );

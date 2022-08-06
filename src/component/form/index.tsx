@@ -3,16 +3,16 @@ import { Card, inputPutCard } from "../../type";
 import { useCardMutation } from "../../useMutation";
 
 export const Form = ({
-  card: card,
-  cardData: cardData,
+  ...props
 }: {
-  card: Card;
-  cardData: Card[];
+  card: Card | null;
+  cardData: Card[] | [];
 }) => {
   const { updateCard_test } = useCardMutation();
+  const { card, cardData } = props;
   const [state, setState] = useState<{ name: string; description: string }>({
-    name: card.name,
-    description: card.description,
+    name: card?.name || "",
+    description: card?.description || "",
   });
   const handleEdit = (cardData: Card[], { id, card }: inputPutCard) => {
     updateCard_test(cardData, { id: id, card: card });
@@ -38,7 +38,7 @@ export const Form = ({
         className="btn-add"
         onClick={() =>
           handleEdit(cardData, {
-            id: card.id,
+            id: card?.id || "",
             card: state,
           })
         }

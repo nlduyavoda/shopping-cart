@@ -7,7 +7,7 @@ export type pokemon = {
 };
 
 export type inputPutCard = {
-  id: number;
+  id: string;
   card: {
     name: string;
     description: string;
@@ -23,11 +23,11 @@ export const action = {
 };
 
 export type Card = {
-  id: number;
+  id: string;
   name: string;
   description: string;
   image: string;
-};
+} | null;
 
 export type PaginationResult = {
   cards: Card[];
