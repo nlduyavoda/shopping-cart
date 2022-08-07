@@ -1,28 +1,26 @@
 import { useState } from "react";
 import "./App.scss";
-import { Form } from "./component/form";
-import { Navigation } from "./component/nav";
-import { CardPage } from "./pages/card";
+import Navigation from "./component/nav";
+import ListCard from "./pages/card";
 
 function App() {
   const [isOpen, setIsOpen] = useState(true);
+  const [selectedCard, setSelectedCard] = useState();
 
-  const props = {
-    card: null,
-    cardData: [],
-  };
+  const handleSelectedCard = (card: any) => setSelectedCard(card);
+
   const closeNav = () => {
-    setIsOpen(false);
+    setIsOpen(!isOpen);
   };
 
   return (
     <div className="App">
-      <Form {...props} />
-      <Navigation isOpen={isOpen} isCloseNav={closeNav} />
-      <CardPage isOpen={!isOpen} />
-      <button className="test-button" onClick={() => setIsOpen(!isOpen)}>
-        {isOpen ? "click to close nav" : "click to open nav"}
-      </button>
+      <Navigation
+        isOpen={isOpen}
+        isCloseNav={closeNav}
+        selectedCard={selectedCard}
+      />
+      <ListCard isOpen={!isOpen} onSelectedCard={handleSelectedCard} />
     </div>
   );
 }

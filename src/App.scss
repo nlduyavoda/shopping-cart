@@ -14,6 +14,34 @@ $base-black: black;
     height: 40px;
     width: 100px;
   }
+
+  .show {
+    animation: showModal 500ms forwards;
+  }
+  .hidden {
+    pointer-events: none;
+    animation: fade 500ms forwards;
+  }
+  .invisible {
+    display: none;
+  }
+  @keyframes fade {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes showModal {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 }
 
 .App-logo {

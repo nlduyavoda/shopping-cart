@@ -19,7 +19,7 @@ export const setQueriesData2 = (
   }
 };
 
-export const host = "http://localhost:8000/";
+export const host = "http://localhost:8001/";
 
 export const useCardMutation = () => {
   const { mutate: postCard } = useMutation((card: any) =>

@@ -5,7 +5,13 @@ import { Pagination } from "../../component/pagination";
 import { Card } from "../../type";
 import "./index.scss";
 
-export const CardPage = ({ isOpen }: { isOpen: Boolean }) => {
+const ListCard = ({
+  isOpen,
+  onSelectedCard,
+}: {
+  isOpen: Boolean;
+  onSelectedCard: (card: any) => void;
+}) => {
   const [currentPage, setCurrentPage] = useState(1);
   const { data: paginationRes } = useQuery(
     ["paginate-cards", currentPage],
@@ -17,7 +23,9 @@ export const CardPage = ({ isOpen }: { isOpen: Boolean }) => {
     setCurrentPage(newCurrentPage);
   };
   const handleSelectectedCard = (card: Card) => {
+    onSelectedCard(card);
     if (state) {
+      onSelectedCard(null);
       setState(null);
     } else {
       setState(card);
@@ -70,3 +78,5 @@ export const CardPage = ({ isOpen }: { isOpen: Boolean }) => {
     </div>
   );
 };
+
+export default ListCard;
