@@ -1,0 +1,88 @@
+.filterWrapper {
+  width: 100%;
+  height: fit-content;
+  padding: 0 20px 0 20px;
+  box-sizing: border-box;
+  .header {
+    display: flex;
+    margin-bottom: 20px;
+    .text {
+      width: calc(100% - 30px);
+    }
+    .icon {
+      height: 20px;
+      width: 20px;
+    }
+  }
+  .body {
+    background-color: #add8e6;
+    border: 1px solid;
+    transform-origin: 0 0;
+    display: block;
+    opacity: 0;
+    transition: 0s;
+    .bodyWrapper {
+      position: relative;
+      display: none;
+      .item {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 20px;
+        .checkboxWrapper {
+          input {
+            width: 20px;
+            height: 20px;
+          }
+        }
+        .labelCheckbox {
+        }
+      }
+    }
+    &.show {
+      opacity: 1;
+      animation: saceYShow 0.5s forwards;
+      .bodyWrapper {
+        display: block;
+      }
+    }
+    &.fade {
+      animation: saceYFade 0.5s forwards;
+      .bodyWrapper {
+      }
+    }
+  }
+}
+
+@keyframes saceYFade {
+  0% {
+    height: 200px;
+  }
+  100% {
+    height: 0px;
+  }
+}
+@keyframes saceYShow {
+  0% {
+    height: 0px;
+  }
+  100% {
+    height: 200px;
+  }
+}
+
+@keyframes animationfade {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes animationShow {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

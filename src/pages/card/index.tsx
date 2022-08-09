@@ -31,7 +31,6 @@ const ListCard = ({
       setState(card);
     }
   };
-
   return (
     <div className={`cards ${isOpen ? "active" : ""}`}>
       <div className="list-card">

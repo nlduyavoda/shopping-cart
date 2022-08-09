@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import Fillter from "../Filter";
 import { Form } from "../form";
 import { RightIcon, LeftIcon } from "../icons";
 import "./Navigation.scss";
@@ -31,6 +32,7 @@ const Navigation = ({
           </button>
         </div>
       </div>
+      <Fillter />
       {isOpen && (
         <div>
           <div className="btnsWrapper">
