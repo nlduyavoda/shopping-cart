@@ -1,8 +1,7 @@
+import { paginateAPI } from "constant";
 import { useRef, useState } from "react";
 import { useQuery } from "react-query";
-import { paginateAPI } from "../../api";
-import { Pagination } from "../../component/pagination";
-import { Card } from "../../type";
+import { CardType } from "type";
 import "./index.scss";
 
 const ListCard = ({
@@ -18,11 +17,8 @@ const ListCard = ({
     () => paginateAPI(currentPage)
   );
   const activeRef = useRef(null);
-  const [state, setState] = useState<Card | null>();
-  const handleChangeCurrentPage = (newCurrentPage: number) => {
-    setCurrentPage(newCurrentPage);
-  };
-  const handleSelectectedCard = (card: Card) => {
+  const [state, setState] = useState<CardType | null>();
+  const handleSelectectedCard = (card: CardType) => {
     onSelectedCard(card);
     if (state) {
       onSelectedCard(null);
@@ -35,7 +31,7 @@ const ListCard = ({
     <div className={`cards ${isOpen ? "active" : ""}`}>
       <div className="list-card">
         {paginationRes?.cards &&
-          paginationRes?.cards.map((card: Card, idx: number) => {
+          paginationRes?.cards.map((card: CardType, idx: number) => {
             return (
               <div
                 ref={activeRef}
@@ -65,14 +61,6 @@ const ListCard = ({
               </div>
             );
           })}
-        {paginationRes?.totalPage && currentPage && (
-          <Pagination
-            isOpen={isOpen}
-            input={currentPage}
-            totalPages={paginationRes?.totalPage}
-            onSetCurrentPage={handleChangeCurrentPage}
-          />
-        )}
       </div>
     </div>
   );

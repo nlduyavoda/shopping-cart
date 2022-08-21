@@ -1,5 +1,5 @@
+import { handleCheck } from "constant";
 import { useEffect, useState } from "react";
-import { handleCheck } from "../../api/controller";
 import "./index.scss";
 export const Pagination = ({
   isOpen,
@@ -16,7 +16,6 @@ export const Pagination = ({
   // const [currentPage, setCurrentPage] = useState(input);
   useEffect(() => {
     const data = handleCheck(input, totalPages);
-    console.log("data :>> ", data);
     setState(data);
   }, [input, totalPages, input]);
 

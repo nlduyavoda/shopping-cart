@@ -6,23 +6,19 @@ export type pokemon = {
   quantity: number;
 };
 
-export type inputPutCard = {
+export type inputPutCardType = {
   id: string;
   card: {
     name: string;
     description: string;
   };
 };
+
 export interface cartType extends pokemon {
   quantity: number;
 }
 
-export const action = {
-  INCREASE: "INCREASE",
-  REDUCE: "REDUCE",
-};
-
-export type Card = {
+export type CardType = {
   id: string;
   name: string;
   description: string;
@@ -30,7 +26,7 @@ export type Card = {
 } | null;
 
 export type PaginationResult = {
-  cards: Card[];
+  cards: CardType[];
   totalPage: number;
   isNext: boolean;
   isPrevous: boolean;

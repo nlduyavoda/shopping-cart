@@ -5,6 +5,7 @@
   flex-wrap: wrap;
   position: relative;
   transition: ease 1s;
+  overflow: scroll;
   &.active {
     width: 90%;
     transition: ease 1s;

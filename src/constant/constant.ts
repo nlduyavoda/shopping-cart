@@ -1,7 +1,23 @@
 import { PaginateCards } from "../type";
-import { host } from "../useMutation";
 
-export const add__card = async (url: string, card: any) => {
+export const host = "http://localhost:8001/";
+
+export const updater = (card: any, data: any) => {
+  return card;
+};
+
+export const handleCheck = (currentPage: number, list: number) => {
+  if (currentPage === 1) {
+    return [currentPage, currentPage + 1, currentPage + 2];
+  }
+  if (currentPage === list) {
+    return [list - 2, list - 1, list];
+  } else {
+    return [currentPage - 1, currentPage, currentPage + 1];
+  }
+};
+
+export const addCard = async (url: string, card: any) => {
   const data = await fetch(url, {
     method: "POST",
     body: JSON.stringify({
@@ -61,7 +77,8 @@ export const fetchAPI = () => {
     .then((res) => res);
   return data;
 };
-export const paginateAPI: PaginateCards = async (currentPage) => {
+
+export const paginateAPI: PaginateCards = async (currentPage: any) => {
   const data = await fetch(`${host}${currentPage}`)
     .then((res) => res.json())
     .then((res) => res);

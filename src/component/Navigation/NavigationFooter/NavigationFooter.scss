@@ -1,0 +1,38 @@
+.navFooter {
+  height: 10%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  .footerWrapper {
+    width: 80%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    overflow: hidden;
+    box-sizing: border-box;
+
+    & .footerIcon {
+      display: flex;
+      width: 50%;
+      margin-right: 20px;
+      & svg {
+        margin-left: 50%;
+        transform: translateX(-50%);
+      }
+      &.small {
+        margin-right: 0px;
+        width: 100%;
+      }
+    }
+
+    & .footerTitle {
+      width: calc(50% - 20px);
+      max-width: 100%;
+      overflow: hidden;
+      &-hidden {
+        opacity: 0;
+        max-width: 0%;
+      }
+    }
+  }
+}

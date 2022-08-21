@@ -1,6 +1,6 @@
+import Navigation from "component/Navigation";
 import { useState } from "react";
 import "./App.scss";
-import Navigation from "./component/nav";
 import ListCard from "./pages/card";
 
 function App() {
