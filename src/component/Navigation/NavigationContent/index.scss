@@ -1,0 +1,17 @@
+.NavigationContent {
+  pointer-events: none;
+  max-width: 0;
+  overflow: scroll;
+  transition: 0.5s;
+  opacity: 0;
+  height: 80%;
+  box-sizing: border-box;
+  &.show {
+    pointer-events: auto;
+    max-width: 100%;
+    opacity: 1;
+  }
+  &.fade {
+    opacity: 0;
+  }
+}

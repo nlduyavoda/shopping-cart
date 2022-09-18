@@ -1,38 +1,30 @@
-import { gql, useMutation } from "@apollo/client";
-import { useForm } from "react-hook-form";
+import "./index.scss";
 
-const INCREMENT_COUNTER = gql`
-  mutation SingleUpload($file: FileUpload!) {
-    singleUpload(file: $file) {
-      filename
-      mimetype
-      encoding
-    }
+export const fetchTodoList = async () => {
+  try {
+    return await fetch("http://localhost:8001/")
+      .then((res) => res.json())
+      .then((res) => res);
+  } catch (error) {
+    console.log("fetch fail");
   }
-`;
+};
 
-export default function Form(props: any) {
-  const [mutateFunction, { data, loading, error }] =
-    useMutation(INCREMENT_COUNTER);
+export type Card = {
+  id: number;
+  name: string;
+  description: string;
+  image: string;
+};
 
-  const { register, handleSubmit } = useForm();
-
-  const onSubmit = async (data: any) => {
-    const res = data.file[0];
-    console.log("res :>> ", res);
-    mutateFunction({
-      variables: {
-        file: res,
-      },
-    });
-  };
-
+export const Form = ({ selectedCard }: { selectedCard: Card }) => {
+  const { name, description } = selectedCard;
   return (
-    <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <input type="file" {...register("file")} />
-        <input type="submit" />
-      </form>
+    <div className="form">
+      <label>name: </label>
+      <input type="name" value={description} />
+      <label>description: </label>
+      <input type="description" value={name} />
     </div>
   );
-}
+};

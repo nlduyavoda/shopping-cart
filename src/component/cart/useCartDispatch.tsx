@@ -1,4 +1,9 @@
-import { cartType, action } from "../../type";
+import { cartType } from "../../type";
+
+const action = {
+  INCREASE: "INCREASE",
+  REDUCE: "REDUCE",
+};
 
 const CartDispatch = (cart: cartType, carts: cartType[], status: string) => {
   const cartIndex = carts.findIndex(

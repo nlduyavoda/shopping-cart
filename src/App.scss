@@ -1,0 +1,16 @@
+$base-white: white;
+$base-red: red;
+$base-black: black;
+$gray-Scale1 : #d3d5d4;
+$gray-Scale2 : #595758;
+
+.App {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100vw;
+  transition: 0.5s all;
+  color: $gray-Scale2;
+  & div {
+  transition: 0.5s all;
+  }
+}

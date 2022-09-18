@@ -5,8 +5,6 @@ const endpoint = "http://localhost:3000/graphql";
 const graphQLClient = new GraphQLClient(endpoint, { headers: {} });
 
 export const requestGQL = (query, variables) => {
-  console.log("query :>> ", query);
-  console.log("variables :>> ", variables);
   // if (process.env.REACT_APP_KEYCLOAK_ENABLED === 'true') {
   //   const token = await refreshToken()
   //   const requestHeaders = {

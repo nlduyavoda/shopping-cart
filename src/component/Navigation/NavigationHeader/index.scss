@@ -1,0 +1,27 @@
+.navHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 10%;
+  box-sizing: border-box;
+
+  .title {
+    position: absolute;
+    opacity: 0;
+  }
+  .btnToggle {
+    width: 100%;
+
+    button {
+      height: 50px;
+      width: 50px;
+      transition: 0.3s;
+      background-color: white;
+      border: none;
+      cursor: pointer;
+      margin-left: calc(50%);
+      transform: translate(-50%);
+    }
+  }
+}

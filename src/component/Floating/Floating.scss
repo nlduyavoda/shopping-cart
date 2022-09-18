@@ -1,0 +1,15 @@
+.floatingWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    width: 100px;
+    background-color: lightblue;
+    bottom: 5%;
+    right:  5%;
+    position: fixed;
+    border-radius: 100%;
+    &:hover{
+       transform: scale(1.1);
+    }
+}
