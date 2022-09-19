@@ -1,116 +1,115 @@
-.cards {
-  width: 70%;
-  height: 100vh;
+@import "utils/variables";
+
+.list-card {
+  width: 60%;
   display: flex;
   flex-wrap: wrap;
-  position: relative;
-  transition: ease 1s;
-  overflow: scroll;
+  gap: $card-gap-5;
+  padding: $card-gap-5;
+  .card {
+    position: relative;
+    box-sizing: border-box;
+    width: calc(
+      calc(100% / $numCards-3 - $card-gap-5) - calc($card-gap-5 / $numCards-3)
+    );
+    font-size: 20px;
+    flex-direction: column;
+    background-color: $black;
+    color: $white;
+
+    & .tag-price {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      top: -25px;
+      left: -20px;
+      position: absolute;
+      height: 35px;
+      width: 50px;
+      border-radius: $radius-default;
+      background-color: $black;
+      color: $white;
+
+      & span {
+        font-weight: bold;
+        color: whitesmoke;
+        font-family: "Libre Baskerville";
+        font-size: 25px;
+      }
+    }
+
+    & .card_image {
+      height: 70%;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+
+      & img {
+        flex-shrink: 0;
+        max-width: 100%;
+        max-height: 100%;
+      }
+    }
+
+    &_body {
+      border-top: none;
+      height: 30%;
+      box-sizing: border-box;
+      text-overflow: ellipsis;
+
+      .title {
+        font-weight: bold;
+        color: #e30022;
+        flex-shrink: 1;
+      }
+      .description {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
   &.active {
-    width: 90%;
+    width: 80%;
     transition: ease 1s;
-    .list-card {
-      .card {
-        &_image {
-          img {
-            object-position: 0% 14%;
-            object-fit: cover;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
-          }
+    gap: $card-gap-5;
+    padding: $card-gap-5;
+    .card {
+      width: calc(
+        calc(100% / $numCards-4 - $card-gap-5) + calc($card-gap-5 / $numCards-4)
+      );
+      height: calc(
+        calc(100% - calc($card-gap-5 * calc($numCards-2 - 1))) / $numCards-2
+      );
+      &_image {
+        img {
+          object-position: 0% 14%;
+          object-fit: cover;
         }
       }
     }
   }
-  .list-card {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    height: 100%;
-    .card {
-      display: flex;
-      width: calc(50% - 40px);
-      height: 70%;
-      font-size: 20px;
-      flex-direction: column;
-      padding: 0px 20px 0 20px;
-      justify-content: center;
-      &_image {
-        flex-shrink: 0;
-        height: 60%;
-        border: 3px solid;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
-        border-bottom: none;
-        position: relative;
-        &.active {
-          border: 10px solid red;
-          border-bottom: none;
-          border-top-left-radius: 20px;
-          border-top-right-radius: 20px;
-        }
-        & .tag-price {
-          top: -25px;
-          left: -20px;
-          position: absolute;
-          height: 70px;
-          width: 100px;
-          border: 3px solid black;
-          border-radius: 10px;
-          background-color: #e30022;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          box-shadow: 2px 2px #343434df;
+}
 
-          & span {
-            font-weight: bold;
-            color: whitesmoke;
-            font-family: "Libre Baskerville";
-            font-size: 30px;
-          }
-        }
-        img {
-          object-position: 0% 14%;
-          object-fit: cover;
-          border-top-left-radius: 10px;
-          border-top-right-radius: 10px;
-        }
-      }
-      &_body {
-        border-bottom-left-radius: 10px;
-        border-bottom-right-radius: 10px;
-        border-top: none;
-        border: 3px solid;
-        padding: 10px;
-        flex-shrink: 1;
-        min-height: 150px;
-        &.active {
-          border: 10px solid red;
-          border-top: none;
-          border-bottom-left-radius: 20px;
-          border-bottom-right-radius: 20px;
-        }
-        .title {
-          font-family: roboto;
-          font-weight: bold;
-          color: #e30022;
-          font-size: 30px;
-          -webkit-text-stroke-width: 1px;
-          -webkit-text-stroke-color: black;
-          flex-shrink: 1;
-        }
-        & .description {
-          height: 75px;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          flex-shrink: 0;
-        }
-      }
+@media screen and (min-width: $dev-mod) {
+  .list-card {
+    .card {
+      flex-wrap: wrap;
+    }
+  }
+}
+
+@media screen and (min-width: $full-screen) {
+  .list-card {
+    .card {
+      height: calc(
+        calc(100% - calc($card-gap-5 * calc($numCards-2 - 1))) / $numCards-2
+      );
+      width: calc(
+        calc(100% / $numCards-3 - $card-gap-5) + calc($card-gap-5 / $numCards-3)
+      );
+      flex-wrap: wrap;
+      box-sizing: border-box;
     }
   }
 }

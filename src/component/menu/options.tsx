@@ -29,8 +29,8 @@ const Options = ({ ...props }) => {
       </div>
 
       <div className="container" ref={modalRef}>
-        {props.options.map((opt: any) => (
-          <Option id={opt.id} name={opt.name} />
+        {props.options.map((opt: any, idx: number) => (
+          <Option id={opt.id} name={opt.name} key={idx} />
         ))}
       </div>
     </div>
