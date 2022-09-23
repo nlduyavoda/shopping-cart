@@ -10,6 +10,7 @@ $gray-Scale2 : #595758;
   width: 100vw;
   transition: 0.5s all;
   color: $gray-Scale2;
+  overflow-x: hidden;
   & div {
   transition: 0.5s all;
   }

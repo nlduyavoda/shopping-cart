@@ -32,9 +32,6 @@ const NavigationContent = ({
   return (
     <div className="NavigationContent" ref={navRef}>
       <Options label="Selector-1" options={optionsDefaultValues} />
-      <Options label="Selector-2" options={optionsDefaultValues} />
-      <Options label="Selector-3" options={optionsDefaultValues} />
-      <Options label="Selector-4" options={optionsDefaultValues} />
 
       <div className="btnsWrapper">
         <button

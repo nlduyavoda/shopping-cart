@@ -23,7 +23,7 @@ export type CardType = {
   name: string;
   description: string;
   image: string;
-} | null;
+};
 
 export type PaginationResult = {
   cards: CardType[];
