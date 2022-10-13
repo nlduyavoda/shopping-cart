@@ -9,9 +9,42 @@
   &.show {
     pointer-events: auto;
     max-width: 100%;
-    opacity: 1;
+    animation: show 0.5s forwards;
   }
   &.fade {
+    animation: fade 0.5s forwards;
+  }
+}
+
+.Minimize_navigation {
+  display: flex;
+  height: 80%;
+  background-color: lightcoral;
+  justify-content: center;
+  .cart-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    width: 100px;
+    background-color: lightcyan;
+    margin-top: 20px;
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 1;
+  }
+  100% {
     opacity: 0;
+  }
+}
+@keyframes show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

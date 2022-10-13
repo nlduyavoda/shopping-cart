@@ -1,7 +1,9 @@
-import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { Provider } from "react-redux";
+import store from "saga/store";
 import App from "./App";
 import "./index.css";
 
@@ -24,10 +26,12 @@ export const queryClient = new QueryClient({
 
 root.render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <ApolloProvider client={client}>
-        <App />
-      </ApolloProvider>
-    </QueryClientProvider>
+    <Provider store={store}>
+      <QueryClientProvider client={queryClient}>
+        <ApolloProvider client={client}>
+          <App />
+        </ApolloProvider>
+      </QueryClientProvider>
+    </Provider>
   </React.StrictMode>
 );

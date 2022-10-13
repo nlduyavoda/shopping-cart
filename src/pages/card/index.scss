@@ -9,12 +9,10 @@
   .card {
     position: relative;
     box-sizing: border-box;
-    width: calc(
-      calc(100% / $numCards-3 - $card-gap-5) - calc($card-gap-5 / $numCards-3)
-    );
+    width: calc(calc(100% / $numCards-3 - $card-gap-5) - calc($card-gap-5 / $numCards-3));
     font-size: 20px;
     flex-direction: column;
-    background-color: $black;
+    background-color: gray;
     color: $white;
 
     & .tag-price {
@@ -27,12 +25,13 @@
       height: 35px;
       width: 50px;
       border-radius: $radius-default;
-      background-color: $black;
+      // background-color: $black;
       color: $white;
 
       & span {
         font-weight: bold;
-        color: whitesmoke;
+        background-color: whitesmoke;
+        color: gray;
         font-family: "Libre Baskerville";
         font-size: 25px;
       }
@@ -56,10 +55,12 @@
       height: 30%;
       box-sizing: border-box;
       text-overflow: ellipsis;
-
+      p {
+        color: black;
+      }
       .title {
         font-weight: bold;
-        color: #e30022;
+        color: white;
         flex-shrink: 1;
       }
       .description {
@@ -75,12 +76,9 @@
     gap: $card-gap-5;
     padding: $card-gap-5;
     .card {
-      width: calc(
-        calc(100% / $numCards-4 - $card-gap-5) + calc($card-gap-5 / $numCards-4)
-      );
-      height: calc(
-        calc(100% - calc($card-gap-5 * calc($numCards-2 - 1))) / $numCards-2
-      );
+      width: calc(calc(100% / $numCards-4 - $card-gap-5) + calc($card-gap-5 / $numCards-4));
+      height: calc(calc(100% - calc($card-gap-5 * calc($numCards-2 - 1))) / $numCards-2);
+
       &_image {
         img {
           object-position: 0% 14%;
@@ -102,12 +100,8 @@
 @media screen and (min-width: $full-screen) {
   .list-card {
     .card {
-      height: calc(
-        calc(100% - calc($card-gap-5 * calc($numCards-2 - 1))) / $numCards-2
-      );
-      width: calc(
-        calc(100% / $numCards-3 - $card-gap-5) + calc($card-gap-5 / $numCards-3)
-      );
+      height: calc(calc(100% - calc($card-gap-5 * calc($numCards-2 - 1))) / $numCards-2);
+      width: calc(calc(100% / $numCards-3 - $card-gap-5) + calc($card-gap-5 / $numCards-3));
       flex-wrap: wrap;
       box-sizing: border-box;
     }

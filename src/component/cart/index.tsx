@@ -6,7 +6,7 @@ export default function Cart({
   onReduce,
 }: {
   carts: cartType[];
-  onReduce: (cart: cartType) => void;
+  onReduce?: (cart: cartType) => void;
 }) {
   const [openModal, setOpenModal] = useState(false);
   return (
@@ -18,7 +18,7 @@ export default function Cart({
       >
         cart: {carts.length}
       </div>
-      {carts.length > 0 && (
+      {/* {carts.length > 0 && (
         <div>
           {carts.map((cart: cartType) => {
             return (
@@ -32,8 +32,7 @@ export default function Cart({
             );
           })}
         </div>
-      )}
-      {/* <div>{pokemon[0].name}</div> */}
+      )} */}
     </div>
   );
 }

@@ -2,6 +2,7 @@ import { paginateAPI } from "constant";
 import { useQuery } from "react-query";
 import { CardType } from "type";
 import { CardDetail } from "./cardDetail";
+import { cardDetailMock } from "./cardDetailMock";
 import "./index.scss";
 
 const ListCard = ({
@@ -18,10 +19,13 @@ const ListCard = ({
 
   return (
     <div className={`list-card${isOpen ? " active" : ""}`}>
-      {paginationRes?.cards &&
+      {paginationRes?.cards ? (
         paginationRes.cards.map((card: CardType) => {
           return <CardDetail card={card} key={card.id} />;
-        })}
+        })
+      ) : (
+        <CardDetail card={cardDetailMock} /> // api invalid
+      )}
     </div>
   );
 };

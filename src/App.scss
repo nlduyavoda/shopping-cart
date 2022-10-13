@@ -1,8 +1,8 @@
 $base-white: white;
 $base-red: red;
 $base-black: black;
-$gray-Scale1 : #d3d5d4;
-$gray-Scale2 : #595758;
+$gray-Scale1: #d3d5d4;
+$gray-Scale2: #595758;
 
 .App {
   display: flex;
@@ -12,6 +12,9 @@ $gray-Scale2 : #595758;
   color: $gray-Scale2;
   overflow-x: hidden;
   & div {
-  transition: 0.5s all;
+    transition: 0.5s all;
+  }
+  .rounded {
+    border-radius: 20%;
   }
 }

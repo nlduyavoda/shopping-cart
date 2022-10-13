@@ -3,7 +3,8 @@
     "baseUrl": "src",
     "paths": {
       "type/*": ["/type/*"],
-      "utils/*": ["/utils/*"]
+      "utils/*": ["/utils/*"],
+      "assets/*": ["/assets/*"]
     }
   }
 }

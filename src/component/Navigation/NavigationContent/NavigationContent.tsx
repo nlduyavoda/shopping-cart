@@ -4,14 +4,16 @@ import { MockInputCard, optionsDefaultValues } from "../../../utils";
 import { Form } from "../../form";
 import Options from "../../menu/options";
 import "./index.scss";
+import Cart from "component/cart";
+import { RootState } from "saga/reducer";
+import { useSelector } from "react-redux";
 
 const handleToggle = (navRef: any, isOpen: boolean) => {
   if (!isOpen) {
     navRef.current.classList.remove("show");
     navRef.current.classList.add("fade");
     navRef.current.addEventListener("animationend", () => {
-      console.log("object");
-      navRef.current.classList.remove("fade");
+      navRef.current.style.display = "none";
     });
   } else {
     navRef.current.classList.add("show");
@@ -25,26 +27,33 @@ const NavigationContent = ({
   selectedCard: any;
   isOpen: boolean;
 }) => {
+  const carts = useSelector((state: RootState) => state.carts);
   const navRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
     handleToggle(navRef, props.isOpen);
   }, [props.isOpen]);
   return (
-    <div className="NavigationContent" ref={navRef}>
-      <Options label="Selector-1" options={optionsDefaultValues} />
-
-      <div className="btnsWrapper">
-        <button
-          onClick={() =>
-            addCard("http://localhost:8001", JSON.stringify(MockInputCard))
-          }
-        >
-          add a random loki !!
-        </button>
-        <button onClick={() => {}}>reset all card</button>
+    <>
+      <div className="Minimize_navigation" ref={navRef}>
+        <div className="cart-container rounded">{carts.quantity}</div>
       </div>
-      {!!props.selectedCard && <Form selectedCard={props.selectedCard} />}
-    </div>
+      <div className="NavigationContent" ref={navRef}>
+        <h1>carts</h1>
+        <Options label="Selector-1" options={optionsDefaultValues} />
+        <Cart carts={[]} />
+        <div className="btnsWrapper">
+          <button
+            onClick={() =>
+              addCard("http://localhost:8001", JSON.stringify(MockInputCard))
+            }
+          >
+            add a random loki !!
+          </button>
+          <button onClick={() => {}}>reset all card</button>
+        </div>
+        {!!props.selectedCard && <Form selectedCard={props.selectedCard} />}
+      </div>
+    </>
   );
 };
 
